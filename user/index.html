@@ -67,7 +67,18 @@
         })
     })
 
-
+    $.ajax({
+            url:'/api/user/queryUserMessage',
+            type:'get',
+            success:function(info) {
+                // console.log(info);
+                if(info.error) {
+                    mui.alert('您未登录，请登录后查看','','',function(){
+                    location.href='/user/login.html?url='+location.href;
+                    });
+                }
+            }
+        })
 
 </script>
 </body>

@@ -47,17 +47,30 @@
 <script src="../js/jquery.min.js"></script>
 <script>
 
+    // console.log(location.search);
+
+    var search =location.search.slice(1);
+    var reg=/url=(.+)/;
+    var match = reg.exec(search);
+    console.log(match);
+    // if(match){
+    //    var url=match[1];
+    // }else {
+    //     var url = '/';
+    // }
+    var url = match && match[1];
+    url = url||'/';
     $('form').on('submit',function () {
         var data=$(this).serialize();
-        console.log(data);
+        // console.log(data);
 
         $.ajax( {
             url:'/api/user/login',
             type:'post',
             data:data,
             success:function(info) {
-                console.log(info);
-                if(info.success) return  location.href='/';
+                // console.log(info);
+                if(info.success) return  location.href=url;
                 alert(info.message);
             }
         })

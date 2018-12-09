@@ -68,7 +68,27 @@
     </footer>
 </div>
 <script src="res/mui/js/mui.min.js"></script>
+<script src="../js/jquery.min.js"></script>
+
 <script>
+    $.ajax({
+        url:'/api/category/queryTopCategory',
+        type:'get',
+        success:function(info) {
+            console.log(info);
+        }
+    })
+
+
+
+
+
+
+
+
+
+
+
     mui(function(){
         mui('.mui-scroll-wrapper').scroll({
             scrollY: true, //是否竖向滚动
